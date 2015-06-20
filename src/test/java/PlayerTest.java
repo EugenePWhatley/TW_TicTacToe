@@ -27,11 +27,5 @@ public class PlayerTest {
         when(input.validInput()).thenReturn(1);
         assertEquals(1, player.location());
     }
-
-
-
-    @Test
-    public void testMark()  {
-
-    }
+    
 }
