@@ -3,7 +3,7 @@ import org.junit.Test;
 
 import java.io.PrintStream;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -21,7 +21,8 @@ public class PlayerTest {
         input = mock(ValidInputChecker.class);
         printStream = mock(PrintStream.class);
         String mark = "X";
-        player = new Player(mark, input, printStream);
+        String number = "1";
+        player = new Player(mark, input, printStream, number);
     }
 
     @Test

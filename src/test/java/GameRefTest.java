@@ -5,9 +5,8 @@ import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Matchers.contains;
+import static org.mockito.Mockito.*;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 /**
@@ -19,7 +18,6 @@ public class GameRefTest {
     private PrintStream printStream;
     private Player playerOne;
     private Player playerTwo;
-    private List<Player> players;
     private GameRef gameRef;
 
     @Before
@@ -28,7 +26,7 @@ public class GameRefTest {
         printStream = mock(PrintStream.class);
         playerOne = mock(Player.class);
         playerTwo = mock(Player.class);
-        players = Arrays.asList(playerOne, playerTwo);
+        List<Player> players = Arrays.asList(playerOne, playerTwo);
         gameRef = new GameRef(board, printStream, players);
     }
 
@@ -42,8 +40,8 @@ public class GameRefTest {
 
     @Test
     public void shouldPlaceMarkInPositionOneWhenBoardIsNotFull(){
-        when(players.get(0).move()).thenReturn(1);
-        when(players.get(0).mark()).thenReturn("X");
+        when(playerOne.move()).thenReturn(1);
+        when(playerOne.mark()).thenReturn("X");
         when(board.boardFull()).thenReturn(false).thenReturn(true);
         when(board.isLocationAvailable(1)).thenReturn(true);
 
@@ -54,8 +52,8 @@ public class GameRefTest {
 
     @Test
     public void shouldAskPlayerToInputAnotherPositionWhenLocationIsNotAvailable(){
-        when(players.get(0).move()).thenReturn(1);
-        when(players.get(0).mark()).thenReturn("X");
+        when(playerOne.move()).thenReturn(1);
+        when(playerOne.mark()).thenReturn("X");
         when(board.boardFull()).thenReturn(false).thenReturn(true);
         when(board.isLocationAvailable(1)).thenReturn(false).thenReturn(true);
 
@@ -66,10 +64,10 @@ public class GameRefTest {
 
     @Test
     public void shouldAskPlayerTwoToInputPositionWhenPlayerOneFinishesTurn(){
-        when(players.get(0).move()).thenReturn(1);
-        when(players.get(0).mark()).thenReturn("X");
-        when(players.get(1).move()).thenReturn(2);
-        when(players.get(1).mark()).thenReturn("O");
+        when(playerOne.move()).thenReturn(1);
+        when(playerOne.mark()).thenReturn("X");
+        when(playerTwo.move()).thenReturn(2);
+        when(playerTwo.mark()).thenReturn("O");
         when(board.boardFull()).thenReturn(false).thenReturn(false).thenReturn(true);
         when(board.isLocationAvailable(1)).thenReturn(true);
         when(board.isLocationAvailable(2)).thenReturn(true);
@@ -81,14 +79,23 @@ public class GameRefTest {
 
     @Test
     public void shouldDrawBoardWhenPlayerMakesValidMove(){
-        when(players.get(0).move()).thenReturn(1);
-        when(players.get(0).mark()).thenReturn("X");
+        when(playerOne.move()).thenReturn(1);
+        when(playerOne.mark()).thenReturn("X");
         when(board.boardFull()).thenReturn(false).thenReturn(true);
         when(board.isLocationAvailable(1)).thenReturn(true);
 
         gameRef.placeMarkOnBoard();
 
         verify(board).draw();
-
     }
+
+    @Test
+    public void shouldAcknowledgePlayerOneAsWinnerWhenPlayerOneHasMarkOnTopRow() {
+
+        gameRef.determineWinner();
+
+        verify(printStream).println(contains("Player 1 Wins"));
+    }
+
+
 }

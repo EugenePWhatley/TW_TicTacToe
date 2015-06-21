@@ -47,4 +47,8 @@ public class Board {
         }
         return true;
     }
+
+    public List<String> cells() {
+        return cells;
+    }
 }

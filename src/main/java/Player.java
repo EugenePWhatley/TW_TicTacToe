@@ -8,11 +8,13 @@ public class Player {
     private String mark;
     private ValidInputChecker input;
     private PrintStream printStream;
+    private String number;
 
-    public Player(String mark, ValidInputChecker input, PrintStream printStream) {
+    public Player(String mark, ValidInputChecker input, PrintStream printStream, String number) {
         this.mark = mark;
         this.input = input;
         this.printStream = printStream;
+        this.number = number;
     }
 
     public int move() {
@@ -24,5 +26,9 @@ public class Player {
 
     public String mark() {
         return mark;
+    }
+
+    public String number() {
+        return number;
     }
 }
