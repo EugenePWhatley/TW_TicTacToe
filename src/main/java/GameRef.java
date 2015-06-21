@@ -24,10 +24,16 @@ public class GameRef {
                 printStream.println("\nGame Is Draw");
                 break;
             }
+            printStream.print("Player " + valueOf(i + 1));
             int move = players.get(i).move();
             String mark = players.get(i).mark();
-            while (board.isLocationAvailable(move)) {
-                board.mark(move,mark);
+            while (true){
+                if(board.isLocationAvailable(move)) {
+                    board.mark(move, mark);
+                    break;
+                } else {
+                    move = players.get(i).move();
+                }
             }
             board.draw();
         }
