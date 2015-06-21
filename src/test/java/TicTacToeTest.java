@@ -21,6 +21,8 @@ public class TicTacToeTest {
 
     @Test
     public void shouldDrawBoardWhenGameStarts(){
+        when(board.boardFull()).thenReturn(true);
+
         ticTacToe.start();
 
         verify(board).draw();

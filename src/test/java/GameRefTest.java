@@ -9,6 +9,7 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 /**
  * Created by eugenew on 6/20/15.
@@ -45,9 +46,50 @@ public class GameRefTest {
         when(players.get(0).move()).thenReturn(1);
         when(players.get(0).mark()).thenReturn("X");
         when(board.boardFull()).thenReturn(false).thenReturn(true);
+        when(board.isLocationAvailable(1)).thenReturn(true);
 
         gameRef.placeMarkOnBoard();
 
-        assertTrue(board.isLocationAvailable(1));
+        verify(board).mark(1,"X");
+    }
+
+    @Test
+    public void shouldAskPlayerToInputAnotherPositionWhenLocationIsNotAvailable(){
+        when(players.get(0).move()).thenReturn(1);
+        when(players.get(0).mark()).thenReturn("X");
+        when(board.boardFull()).thenReturn(false).thenReturn(true);
+        when(board.isLocationAvailable(1)).thenReturn(false).thenReturn(true);
+
+        gameRef.placeMarkOnBoard();
+
+        verify(playerOne, times(2)).move();
+    }
+
+    @Test
+    public void shouldAskPlayerTwoToInputPositionWhenPlayerOneFinishesTurn(){
+        when(players.get(0).move()).thenReturn(1);
+        when(players.get(0).mark()).thenReturn("X");
+        when(players.get(1).move()).thenReturn(2);
+        when(players.get(1).mark()).thenReturn("O");
+        when(board.boardFull()).thenReturn(false).thenReturn(false).thenReturn(true);
+        when(board.isLocationAvailable(1)).thenReturn(true);
+        when(board.isLocationAvailable(2)).thenReturn(true);
+
+        gameRef.placeMarkOnBoard();
+
+        verify(playerTwo).move();
+    }
+
+    @Test
+    public void shouldDrawBoardWhenPlayerMakesValidMove(){
+        when(players.get(0).move()).thenReturn(1);
+        when(players.get(0).mark()).thenReturn("X");
+        when(board.boardFull()).thenReturn(false).thenReturn(true);
+        when(board.isLocationAvailable(1)).thenReturn(true);
+
+        gameRef.placeMarkOnBoard();
+
+        verify(board).draw();
+
     }
 }

@@ -27,12 +27,14 @@ public class GameRef {
             printStream.print("Player " + valueOf(i + 1));
             int move = players.get(i).move();
             String mark = players.get(i).mark();
-            while (true){
+            boolean inValidLocation = true;
+            while (inValidLocation){
                 if(board.isLocationAvailable(move)) {
                     board.mark(move, mark);
-                    break;
+                    inValidLocation = false;
                 } else {
                     move = players.get(i).move();
+                    inValidLocation = true;
                 }
             }
             board.draw();

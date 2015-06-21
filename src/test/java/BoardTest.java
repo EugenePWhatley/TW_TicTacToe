@@ -57,7 +57,8 @@ public class BoardTest {
     @Test
     public void shouldGiveErrorMessageForLocationAlreadyOccupied(){
         board.mark(1, "X");
-        board.mark(1, "O");
+
+        board.isLocationAvailable(1);
 
         verify(printStream).println("Location already filled");
     }
