@@ -12,7 +12,7 @@ public class GameRef {
     private PrintStream printStream;
     private List<Player> players;
 
-    public GameRef(Board board, PrintStream printStream, List<Player> players){
+    public GameRef(Board board, PrintStream printStream, List<Player> players) {
         this.board = board;
         this.printStream = printStream;
         this.players = players;
@@ -28,8 +28,8 @@ public class GameRef {
             int move = players.get(i).move();
             String mark = players.get(i).mark();
             boolean inValidLocation = true;
-            while (inValidLocation){
-                if(board.isLocationAvailable(move)) {
+            while (inValidLocation) {
+                if (board.isLocationAvailable(move)) {
                     board.mark(move, mark);
                     inValidLocation = false;
                 } else {

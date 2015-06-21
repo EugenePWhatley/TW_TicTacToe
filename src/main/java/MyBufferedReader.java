@@ -11,9 +11,9 @@ public class MyBufferedReader extends BufferedReader {
     }
 
     @Override
-    public String readLine(){
-        try{
-             return super.readLine();
+    public String readLine() {
+        try {
+            return super.readLine();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

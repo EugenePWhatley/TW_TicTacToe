@@ -16,11 +16,11 @@ public class Main {
         players.add(playerOne);
         players.add(playerTwo);
         List<String> locations = Arrays.asList(
-                " "," "," ",
-                " "," "," ",
-                " "," "," ");
+                " ", " ", " ",
+                " ", " ", " ",
+                " ", " ", " ");
         Board board = new Board(System.out, locations);
-        GameRef gameRef = new GameRef(board,System.out, players);
+        GameRef gameRef = new GameRef(board, System.out, players);
         TicTacToe ticTacToe = new TicTacToe(board, gameRef);
         ticTacToe.start();
     }
