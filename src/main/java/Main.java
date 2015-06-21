@@ -16,7 +16,7 @@ public class Main {
         players.add(playerTwo);
         ArrayList<String> locations = new ArrayList<String>();
         Board board = new Board(System.out, locations);
-        GameRef gameRef = new GameRef(board,System.out);
-        new TicTacToe(board, players, gameRef).start();
+        GameRef gameRef = new GameRef(board,System.out, players);
+        new TicTacToe(board, gameRef).start();
     }
 }

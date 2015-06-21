@@ -28,7 +28,7 @@ public class TicTacToeTest {
         players.add(playerOne);
         players.add(playerTwo);
         gameRef = mock(GameRef.class);
-        ticTacToe = new TicTacToe(board, players, gameRef);
+        ticTacToe = new TicTacToe(board, gameRef);
     }
 
     @Test

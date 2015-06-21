@@ -8,14 +8,15 @@ public class GameRef {
 
     private Board board;
     private PrintStream printStream;
+    private List<Player> players;
 
-    public GameRef(Board board, PrintStream printStream){
-
+    public GameRef(Board board, PrintStream printStream, List<Player> players){
         this.board = board;
         this.printStream = printStream;
+        this.players = players;
     }
 
-    public void placeMarkOnBoard(List<Player> players) {
+    public void placeMarkOnBoard() {
         for (int i = 0; i < players.size(); i++) {
             if (board.boardFull()) {
                 printStream.println("\nGame Is Draw");
