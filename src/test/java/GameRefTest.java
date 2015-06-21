@@ -23,7 +23,7 @@ public class GameRefTest {
     private GameRef gameRef;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp()  {
         board = mock(Board.class);
         printStream = mock(PrintStream.class);
         playerOne = mock(Player.class);

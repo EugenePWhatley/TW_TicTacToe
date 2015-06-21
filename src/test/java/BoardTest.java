@@ -2,7 +2,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,14 +19,12 @@ public class BoardTest {
 
     private PrintStream printStream;
     private Board board;
-    private Player player;
     private List<String> cells;
     private final String unoccupied = " ";
 
     @Before
     public void setUo(){
         printStream = mock(PrintStream.class);
-        player = mock(Player.class);
         cells = Arrays.asList(
                 unoccupied,unoccupied,unoccupied,
                 unoccupied,unoccupied,unoccupied,
