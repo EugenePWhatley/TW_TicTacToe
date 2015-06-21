@@ -26,12 +26,18 @@ public class Board {
                             "  |   |");
     }
 
-    public void redraw(int location, String mark) {
-        locations.set(location-1, mark);
-        printStream.printf(" %s | %s | %s\n" +
-                "---------\n" +
-                " %s | %s | %s\n" +
-                "---------\n" +
-                " %s | %s | %s", locations.get(0), locations.get(1), locations.get(2), locations.get(3), locations.get(4), locations.get(5), locations.get(6), locations.get(7), locations.get(8));
+    public boolean redraw(int location, String mark) {
+
+        if(locations.get(location-1).equals(unoccupied)) {
+            locations.set(location - 1, mark);
+            printStream.printf("%s | %s | %s\n" +
+                    "---------\n" +
+                    "%s | %s | %s\n" +
+                    "---------\n" +
+                    "%s | %s | %s", locations.get(0), locations.get(1), locations.get(2), locations.get(3), locations.get(4), locations.get(5), locations.get(6), locations.get(7), locations.get(8));
+            return true;
+        }
+        printStream.println("Location already filled");
+        return false;
     }
 }

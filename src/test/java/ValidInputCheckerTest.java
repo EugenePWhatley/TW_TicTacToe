@@ -23,24 +23,21 @@ public class ValidInputCheckerTest {
 
         bufferedReader = mock(MyBufferedReader.class);
         printStream = mock(PrintStream.class);
-        input = new ValidInputChecker(bufferedReader, printStream);
+        input = new ValidInputChecker(bufferedReader);
     }
 
     @Test
     public void shouldAcknowledgeInputWhenValid(){
         when(bufferedReader.readLine()).thenReturn("1");
-        input.getInput();
 
         assertEquals(input.validInput(), 1);
     }
 
     @Test
-    public void shouldGiveErrorMessageForInvalidInput(){
+    public void shouldGiveZeroForInvalidInput(){
         when(bufferedReader.readLine()).thenReturn("20");
-        input.getInput();
-        input.validInput();
 
-        verify(printStream).println("Invalid input");
+        assertEquals(input.validInput(), 0);
     }
 
 }

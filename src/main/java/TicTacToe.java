@@ -6,15 +6,26 @@ import java.io.PrintStream;
 public class TicTacToe {
     private Board board;
     private PrintStream printStream;
+    private Player playerOne;
+    private Player playerTwo;
 
-    public TicTacToe(Board board, PrintStream printStream) {
+    public TicTacToe(Board board, PrintStream printStream, Player playerOne, Player playerTwo) {
         this.board = board;
         this.printStream = printStream;
+        this.playerOne = playerOne;
+        this.playerTwo = playerTwo;
     }
 
     public void start() {
         board.draw();
-        prompt();
+        placeMarkOnBoard(playerOne);
+        placeMarkOnBoard(playerTwo);
+    }
+
+    private void placeMarkOnBoard(Player player) {
+        do{
+            prompt();
+        } while(!board.redraw(player.location(),player.mark()));
     }
 
     public void prompt() {
