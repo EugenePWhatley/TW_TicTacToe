@@ -34,7 +34,6 @@ public class GameRef {
     }
 
     private int getValidMove(Player player) {
-        printStream.print("Player " + player.number());
         int move = player.move();
         boolean invalidLocation = true;
         while (invalidLocation) {
