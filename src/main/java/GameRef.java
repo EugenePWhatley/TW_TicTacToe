@@ -25,6 +25,7 @@ public class GameRef {
             do {
                 printStream.println("\nEnter a number between 1 and 9:");
             } while (!board.mark(players.get(i).move(), players.get(i).mark()));
+            board.draw();
         }
     }
 }
