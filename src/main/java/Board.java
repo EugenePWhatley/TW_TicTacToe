@@ -6,35 +6,30 @@ import java.util.List;
  */
 public class Board {
     private PrintStream printStream;
-    private List<String> locations;
+    private List<String> cells;
     private final String unoccupied = " ";
 
-    public Board(PrintStream printStream, List<String> locations) {
-        this.locations = locations;
-        for(int i = 0; i < 9; i++){
-            locations.add(unoccupied);
-        }
-
+    public Board(PrintStream printStream, List<String> cells) {
+        this.cells = cells;
         this.printStream = printStream;
     }
 
     public void draw() {
-        printStream.println("  |   |\n" +
-                            "---------\n" +
-                            "  |   |\n" +
-                            "---------\n" +
-                            "  |   |");
+        String boardGrid = String.format(
+                "%s|%s|%s\n" +
+                "------\n" +
+                "%s|%s|%s\n" +
+                "------\n" +
+                "%s|%s|%s",
+                cells.get(0), cells.get(1), cells.get(2),
+                cells.get(3), cells.get(4), cells.get(5),
+                cells.get(6), cells.get(7), cells.get(8));
+        printStream.println(boardGrid);
     }
 
-    public boolean redraw(int location, String mark) {
-
-        if(locations.get(location-1).equals(unoccupied)) {
-            locations.set(location - 1, mark);
-            printStream.printf("%s | %s | %s\n" +
-                    "---------\n" +
-                    "%s | %s | %s\n" +
-                    "---------\n" +
-                    "%s | %s | %s", locations.get(0), locations.get(1), locations.get(2), locations.get(3), locations.get(4), locations.get(5), locations.get(6), locations.get(7), locations.get(8));
+    public boolean mark(int location, String mark) {
+        if(cells.get(location-1).equals(unoccupied)) {
+            cells.set(location - 1, mark);
             return true;
         }
         printStream.println("Location already filled");
@@ -42,7 +37,7 @@ public class Board {
     }
 
     public boolean boardFull(){
-        for (String location : locations) {
+        for (String location : cells) {
             if(location.equals(unoccupied)){
                 return false;
             }

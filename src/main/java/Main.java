@@ -1,5 +1,6 @@
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -14,7 +15,10 @@ public class Main {
         List<Player> players = new ArrayList<Player>();
         players.add(playerOne);
         players.add(playerTwo);
-        ArrayList<String> locations = new ArrayList<String>();
+        List<String> locations = Arrays.asList(
+                " "," "," ",
+                " "," "," ",
+                " "," "," ");
         Board board = new Board(System.out, locations);
         GameRef gameRef = new GameRef(board,System.out, players);
         new TicTacToe(board, gameRef).start();

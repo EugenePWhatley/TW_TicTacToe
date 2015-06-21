@@ -40,24 +40,24 @@ public class TicTacToeTest {
 
     @Test
     public void shouldPlacePlayersMoveOnBoard(){
-        when(playerOne.location()).thenReturn(2);
+        when(playerOne.move()).thenReturn(2);
         when(playerOne.mark()).thenReturn("X");
 
         ticTacToe.start();
 
-        verify(board).redraw(playerOne.location(), playerOne.mark());
+        verify(board).mark(playerOne.move(), playerOne.mark());
     }
 
     @Test
     public void shouldPlacePlayerTwoMoveOnBoardWithPlayerOnesMove(){
-        when(playerOne.location()).thenReturn(2);
+        when(playerOne.move()).thenReturn(2);
         when(playerOne.mark()).thenReturn("X");
-        when(playerTwo.location()).thenReturn(3);
+        when(playerTwo.move()).thenReturn(3);
         when(playerTwo.mark()).thenReturn("O");
 
         ticTacToe.start();
 
-        verify(board).redraw(playerOne.location(), playerOne.mark());
-        verify(board).redraw(playerTwo.location(), playerTwo.mark());
+        verify(board).mark(playerOne.move(), playerOne.mark());
+        verify(board).mark(playerTwo.move(), playerTwo.mark());
     }
 }

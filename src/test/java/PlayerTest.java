@@ -1,8 +1,6 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.PrintStream;
-
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -25,7 +23,7 @@ public class PlayerTest {
     @Test
     public void shouldGiveLocationOne()  {
         when(input.validInput()).thenReturn(1);
-        assertEquals(1, player.location());
+        assertEquals(1, player.move());
     }
     
 }

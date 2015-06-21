@@ -29,5 +29,4 @@ public class GameRefTest {
 
         verify(printStream).println("\nGame Is Draw");
     }
-
 }

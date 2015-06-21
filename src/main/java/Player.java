@@ -12,7 +12,7 @@ public class Player {
         this.input = input;
     }
 
-    public int location() {
+    public int move() {
         int location = input.validInput();
         return location;
     }
