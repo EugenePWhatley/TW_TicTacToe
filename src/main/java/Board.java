@@ -1,6 +1,8 @@
 import java.io.PrintStream;
 import java.util.List;
 
+import static java.lang.String.*;
+
 /**
  * Created by eugenew on 6/20/15.
  */
@@ -15,7 +17,7 @@ public class Board {
     }
 
     public void draw() {
-        String boardGrid = String.format(
+        String boardGrid = format(
                 "%s|%s|%s\n" +
                 "------\n" +
                 "%s|%s|%s\n" +

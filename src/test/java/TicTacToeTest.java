@@ -1,7 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -16,7 +17,7 @@ public class TicTacToeTest {
     private Board board;
     private Player playerOne;
     private Player playerTwo;
-    private ArrayList<Player> players;
+    private List<Player> players;
     private GameRef gameRef;
 
     @Before
@@ -24,9 +25,7 @@ public class TicTacToeTest {
         board = mock(Board.class);
         playerOne = mock(Player.class);
         playerTwo = mock(Player.class);
-        players = new ArrayList<Player>();
-        players.add(playerOne);
-        players.add(playerTwo);
+        players = Arrays.asList(playerOne,playerTwo);
         gameRef = mock(GameRef.class);
         ticTacToe = new TicTacToe(board, gameRef);
     }

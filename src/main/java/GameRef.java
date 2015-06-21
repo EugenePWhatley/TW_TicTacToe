@@ -1,6 +1,8 @@
 import java.io.PrintStream;
 import java.util.List;
 
+import static java.lang.String.valueOf;
+
 /**
  * Created by eugenew on 6/20/15.
  */
@@ -23,7 +25,7 @@ public class GameRef {
                 break;
             }
             do {
-                printStream.println("\nEnter a number between 1 and 9:");
+                printStream.println("\nPlayer " + valueOf(i+1) + ", Enter a number between 1 and 9:");
             } while (!board.mark(players.get(i).move(), players.get(i).mark()));
             board.draw();
         }

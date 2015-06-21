@@ -21,6 +21,7 @@ public class Main {
                 " "," "," ");
         Board board = new Board(System.out, locations);
         GameRef gameRef = new GameRef(board,System.out, players);
-        new TicTacToe(board, gameRef).start();
+        TicTacToe ticTacToe = new TicTacToe(board, gameRef);
+        ticTacToe.start();
     }
 }

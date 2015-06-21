@@ -1,3 +1,5 @@
+import static java.lang.Integer.*;
+
 /**
  * Created by eugenew on 6/20/15.
  */
@@ -11,7 +13,7 @@ public class ValidInputChecker {
 
     public int validInput() {
         String inputAsString = bufferedReader.readLine();
-        this.input = Integer.parseInt(inputAsString);
+        this.input = parseInt(inputAsString);
         if(input >= 1 && input <= 9){
             return input;
         } else {
