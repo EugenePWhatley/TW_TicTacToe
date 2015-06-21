@@ -6,18 +6,18 @@ import java.util.List;
 public class TicTacToe {
     private Board board;
     private List<Player> players;
-    private BoardMarker boardMarker;
+    private GameRef gameRef;
 
-    public TicTacToe(Board board, List<Player> players, BoardMarker boardMarker) {
+    public TicTacToe(Board board, List<Player> players, GameRef gameRef) {
         this.board = board;
         this.players = players;
-        this.boardMarker = boardMarker;
+        this.gameRef = gameRef;
     }
 
     public void start() {
         board.draw();
         while (!board.boardFull()) {
-            boardMarker.placeMarkOnBoard(players);
+            gameRef.placeMarkOnBoard(players);
         }
     }
 }

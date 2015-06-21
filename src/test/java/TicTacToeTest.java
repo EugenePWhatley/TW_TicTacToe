@@ -17,7 +17,7 @@ public class TicTacToeTest {
     private Player playerOne;
     private Player playerTwo;
     private ArrayList<Player> players;
-    private BoardMarker boardMarker;
+    private GameRef gameRef;
 
     @Before
     public void setUo(){
@@ -27,8 +27,8 @@ public class TicTacToeTest {
         players = new ArrayList<Player>();
         players.add(playerOne);
         players.add(playerTwo);
-        boardMarker = mock(BoardMarker.class);
-        ticTacToe = new TicTacToe(board, players, boardMarker);
+        gameRef = mock(GameRef.class);
+        ticTacToe = new TicTacToe(board, players, gameRef);
     }
 
     @Test

@@ -4,12 +4,12 @@ import java.util.List;
 /**
  * Created by eugenew on 6/20/15.
  */
-public class BoardMarker {
+public class GameRef {
 
     private Board board;
     private PrintStream printStream;
 
-    BoardMarker(Board board, PrintStream printStream){
+    public GameRef(Board board, PrintStream printStream){
 
         this.board = board;
         this.printStream = printStream;
