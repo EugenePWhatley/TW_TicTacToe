@@ -4,9 +4,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
  * Created by eugenew on 6/20/15.
@@ -15,17 +13,11 @@ public class TicTacToeTest {
 
     private TicTacToe ticTacToe;
     private Board board;
-    private Player playerOne;
-    private Player playerTwo;
-    private List<Player> players;
     private GameRef gameRef;
 
     @Before
     public void setUo(){
         board = mock(Board.class);
-        playerOne = mock(Player.class);
-        playerTwo = mock(Player.class);
-        players = Arrays.asList(playerOne,playerTwo);
         gameRef = mock(GameRef.class);
         ticTacToe = new TicTacToe(board, gameRef);
     }
@@ -38,25 +30,20 @@ public class TicTacToeTest {
     }
 
     @Test
-    public void shouldPlacePlayersMoveOnBoard(){
-        when(playerOne.move()).thenReturn(2);
-        when(playerOne.mark()).thenReturn("X");
+    public void shouldNotTellRefToPlaceMarkOnBoardWhenBoardIsFull(){
+        when(board.boardFull()).thenReturn(true);
 
         ticTacToe.start();
 
-        verify(board).mark(playerOne.move(), playerOne.mark());
+        verify(gameRef, never()).placeMarkOnBoard();
     }
 
     @Test
-    public void shouldPlacePlayerTwoMoveOnBoardWithPlayerOnesMove(){
-        when(playerOne.move()).thenReturn(2);
-        when(playerOne.mark()).thenReturn("X");
-        when(playerTwo.move()).thenReturn(3);
-        when(playerTwo.mark()).thenReturn("O");
+    public void shouldTellRefToPlaceMarkOnBoardWhenBoardIsNotFull(){
+        when(board.boardFull()).thenReturn(false);
 
         ticTacToe.start();
 
-        verify(board).mark(playerOne.move(), playerOne.mark());
-        verify(board).mark(playerTwo.move(), playerTwo.mark());
+        verify(gameRef).placeMarkOnBoard();
     }
 }
