@@ -5,6 +5,7 @@ import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -40,16 +41,15 @@ public class GameRefTest {
     }
 
     @Test
-    public void shouldPlaceMarkWhenBoardIsNotFull(){
-        when(board.boardFull()).thenReturn(false);
+    public void shouldPlaceMarkInPositionOneWhenBoardIsNotFull(){
+        when(board.boardFull()).thenReturn(false).thenReturn(true);
         when(playerOne.move()).thenReturn(1);
         when(playerOne.mark()).thenReturn("X");
-//        when(playerTwo.move()).thenReturn(2);
-//        when(board.mark(players.get(0).move(),players.get(0).mark())).thenReturn(true);
-        when(board.mark(playerOne.move(),playerOne.mark())).thenReturn(true);
+        when(playerTwo.move()).thenReturn(2);
+        when(playerTwo.mark()).thenReturn("O");
 
         gameRef.placeMarkOnBoard();
 
-        verify(board).draw();
+        assertTrue(board.mark(playerOne.move(), playerOne.mark()));
     }
 }

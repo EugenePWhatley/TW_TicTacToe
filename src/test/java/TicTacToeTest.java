@@ -37,7 +37,7 @@ public class TicTacToeTest {
 
     @Test
     public void shouldTellRefToPlaceMarkOnBoardWhenBoardIsNotFull(){
-        when(board.boardFull()).thenReturn(false);
+        when(board.boardFull()).thenReturn(false).thenReturn(true);
 
         ticTacToe.start();
 
