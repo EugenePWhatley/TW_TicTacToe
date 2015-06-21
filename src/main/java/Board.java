@@ -23,18 +23,16 @@ public class Board {
                 "%s|%s|%s\n" +
                 "------\n" +
                 "%s|%s|%s",
-                cells.get(0), cells.get(1), cells.get(2),
-                cells.get(3), cells.get(4), cells.get(5),
-                cells.get(6), cells.get(7), cells.get(8));
+                cells.toArray());
         printStream.println(boardGrid);
     }
 
     public void mark(int location, String mark) {
-        cells.set(location - 1, mark);
+        cells.set(location, mark);
     }
 
     public boolean isLocationAvailable(int location){
-        if(cells.get(location-1).equals(unoccupied)){
+        if(cells.get(location).equals(unoccupied)){
             return true;
         }
         printStream.println("Location already filled");

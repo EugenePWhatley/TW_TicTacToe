@@ -18,7 +18,7 @@ public class Player {
     public int move() {
         printStream.println("\nEnter a number between 1 and 9:");
         int location = input.validInput();
-        return location;
+        return location-1;
     }
 
 
