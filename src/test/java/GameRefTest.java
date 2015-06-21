@@ -42,14 +42,12 @@ public class GameRefTest {
 
     @Test
     public void shouldPlaceMarkInPositionOneWhenBoardIsNotFull(){
+        when(players.get(0).move()).thenReturn(1);
+        when(players.get(0).mark()).thenReturn("X");
         when(board.boardFull()).thenReturn(false).thenReturn(true);
-        when(playerOne.move()).thenReturn(1);
-        when(playerOne.mark()).thenReturn("X");
-        when(playerTwo.move()).thenReturn(2);
-        when(playerTwo.mark()).thenReturn("O");
 
         gameRef.placeMarkOnBoard();
 
-        assertTrue(board.mark(playerOne.move(), playerOne.mark()));
+        assertTrue(board.isLocationAvailable(1));
     }
 }

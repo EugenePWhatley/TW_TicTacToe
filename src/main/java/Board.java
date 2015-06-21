@@ -29,9 +29,12 @@ public class Board {
         printStream.println(boardGrid);
     }
 
-    public boolean mark(int location, String mark) {
-        if(cells.get(location-1).equals(unoccupied)) {
-            cells.set(location - 1, mark);
+    public void mark(int location, String mark) {
+        cells.set(location - 1, mark);
+    }
+
+    public boolean isLocationAvailable(int location){
+        if(cells.get(location-1).equals(unoccupied)){
             return true;
         }
         printStream.println("Location already filled");

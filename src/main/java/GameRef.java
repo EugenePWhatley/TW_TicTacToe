@@ -24,9 +24,11 @@ public class GameRef {
                 printStream.println("\nGame Is Draw");
                 break;
             }
-            do {
-                printStream.println("\nPlayer " + valueOf(i+1) + ", Enter a number between 1 and 9:");
-            } while (!board.mark(players.get(i).move(), players.get(i).mark()));
+            int move = players.get(i).move();
+            String mark = players.get(i).mark();
+            while (board.isLocationAvailable(move)) {
+                board.mark(move,mark);
+            }
             board.draw();
         }
     }

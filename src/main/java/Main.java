@@ -10,8 +10,8 @@ public class Main {
     public static void main(String[] args) {
         MyBufferedReader bufferedReader = new MyBufferedReader(new InputStreamReader(System.in));
         ValidInputChecker input = new ValidInputChecker(bufferedReader);
-        Player playerOne = new Player("X", input);
-        Player playerTwo = new Player("O", input);
+        Player playerOne = new Player("X", input, System.out);
+        Player playerTwo = new Player("O", input, System.out);
         List<Player> players = new ArrayList<Player>();
         players.add(playerOne);
         players.add(playerTwo);
