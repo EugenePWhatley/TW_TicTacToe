@@ -5,6 +5,8 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.String.valueOf;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -59,4 +61,12 @@ public class BoardTest {
         verify(printStream).println("Location already filled");
     }
 
+    @Test
+    public void shouldAcknowledgeFullBoard(){
+        for (int i = 1; i <= 9; i++) {
+            board.redraw(i, valueOf(i));
+        }
+
+        assertTrue(board.boardFull());
+    }
 }

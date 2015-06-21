@@ -1,5 +1,6 @@
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by eugenew on 6/20/15.
@@ -10,8 +11,12 @@ public class Main {
         ValidInputChecker input = new ValidInputChecker(bufferedReader);
         Player playerOne = new Player("X", input);
         Player playerTwo = new Player("O", input);
+        List<Player> players = new ArrayList<Player>();
+        players.add(playerOne);
+        players.add(playerTwo);
         ArrayList<String> locations = new ArrayList<String>();
         Board board = new Board(System.out, locations);
-        new TicTacToe(board,System.out, playerOne, playerTwo).start();
+        BoardMarker boardMarker = new BoardMarker(board,System.out);
+        new TicTacToe(board, players, boardMarker).start();
     }
 }

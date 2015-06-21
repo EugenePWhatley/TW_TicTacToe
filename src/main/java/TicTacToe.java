@@ -1,34 +1,23 @@
-import java.io.PrintStream;
+import java.util.List;
 
 /**
  * Created by eugenew on 6/20/15.
  */
 public class TicTacToe {
     private Board board;
-    private PrintStream printStream;
-    private Player playerOne;
-    private Player playerTwo;
+    private List<Player> players;
+    private BoardMarker boardMarker;
 
-    public TicTacToe(Board board, PrintStream printStream, Player playerOne, Player playerTwo) {
+    public TicTacToe(Board board, List<Player> players, BoardMarker boardMarker) {
         this.board = board;
-        this.printStream = printStream;
-        this.playerOne = playerOne;
-        this.playerTwo = playerTwo;
+        this.players = players;
+        this.boardMarker = boardMarker;
     }
 
     public void start() {
         board.draw();
-        placeMarkOnBoard(playerOne);
-        placeMarkOnBoard(playerTwo);
-    }
-
-    private void placeMarkOnBoard(Player player) {
-        do{
-            prompt();
-        } while(!board.redraw(player.location(),player.mark()));
-    }
-
-    public void prompt() {
-        printStream.println("Enter a number between 1 and 9:");
+        while (!board.boardFull()) {
+            boardMarker.placeMarkOnBoard(players);
+        }
     }
 }

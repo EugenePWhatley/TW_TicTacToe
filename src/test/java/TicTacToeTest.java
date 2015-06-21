@@ -1,7 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.PrintStream;
+import java.util.ArrayList;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -14,17 +14,21 @@ public class TicTacToeTest {
 
     private TicTacToe ticTacToe;
     private Board board;
-    private PrintStream printStream;
     private Player playerOne;
     private Player playerTwo;
+    private ArrayList<Player> players;
+    private BoardMarker boardMarker;
 
     @Before
     public void setUo(){
         board = mock(Board.class);
-        printStream = mock(PrintStream.class);
         playerOne = mock(Player.class);
         playerTwo = mock(Player.class);
-        ticTacToe = new TicTacToe(board, printStream, playerOne, playerTwo);
+        players = new ArrayList<Player>();
+        players.add(playerOne);
+        players.add(playerTwo);
+        boardMarker = mock(BoardMarker.class);
+        ticTacToe = new TicTacToe(board, players, boardMarker);
     }
 
     @Test
@@ -32,13 +36,6 @@ public class TicTacToeTest {
         ticTacToe.start();
 
         verify(board).draw();
-    }
-
-    @Test
-    public void shouldPromptPlayerToMakeMoveAfterBoardDrawn(){
-        ticTacToe.prompt();
-
-        verify(printStream).println("Enter a number between 1 and 9:");
     }
 
     @Test

@@ -40,4 +40,13 @@ public class Board {
         printStream.println("Location already filled");
         return false;
     }
+
+    public boolean boardFull(){
+        for (String location : locations) {
+            if(location.equals(unoccupied)){
+                return false;
+            }
+        }
+        return true;
+    }
 }
